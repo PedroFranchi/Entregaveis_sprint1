@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        input:focus:-moz-placeholder {
+            /* Firefox 18- */
+            color: transparent;
+        }
+
+        input:focus::-moz-placeholder {
+            /* Firefox 19+ */
+            color: transparent;
+        }
+
+        input:focus:-ms-input-placeholder {
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body style="margin: 0;">
+    <div style="width: 100vw; height: 65px; background-color: rgb(77, 109, 180);">
+        <p style="font-size: 25px; color: white;">Calculadora Financeira - Produção de Pirarucu &emsp;&emsp;<button style="font-size: 20px; background-color: rgb(77, 109, 180); color: white; border-color: rgb(77, 109, 180);">HOME</button></p> 
+    </div><br>
+    <br>
+<div>
+    <div><img src="https://www.infoescola.com/wp-content/uploads/2010/06/pirarucu_757650421.jpg" style="height: 300px; width: 600px; float: right;margin-right: 180px;" alt="Peixe Pirarucu"></div>
+    Quanto é investido por ano?<br>
+    <input id="input_investimento"><br> <br>
+    Quantos % (por cento) perde por ano?<br>
+    <input type="text" id="input_perca_ano" placeholder="Perda por ano em %"><br>
+    <br>
+    Qual a qualidade do seus profissionais e equipamentos? <br>
+    (1, 2 ou 3, sendo 1 pior qualidade e 3 sendo a maior) <br>
+    <input id="input_qualidade_funcionarios_equipamentos"><br>
+    <br>
+    <button onclick="calcularInvestimento()" style="background-color: rgb(77, 109, 180); color: white;"> CALCULAR
+    </button> <br>
+    <br>
+</div>
+    <div id="div_textoExplicativo"></div>
+</body>
+
+</html>
+
+<script>
+    function calcularInvestimento() {
+        var investimento = Number(input_investimento.value)
+        var perda = Number(input_perca_ano.value)
+        var qualidadeProfissionaisEquipamentos = Number(input_qualidade_funcionarios_equipamentos.value)
+        var perdaAnual = ((perda / 100) * investimento)
+
+        if (qualidadeProfissionaisEquipamentos == 1) {
+            var porcentagemAtualizada = perda * 0.33
+            div_textoExplicativo.innerHTML = `Baseado em seu investimento anual de (${investimento})
+        perda anual de (${perda}%) e a qualidade dos seus equipamentos e profissionais percebemos que você tem uma perda de R$${perdaAnual} por ano, neste caso conseguimos te auxiliar na diminuição de aproximadamente ${porcentagemAtualizada}% contando que a sua equipe saiba o minimo sobre cuidar de tanques de Pirarucu e seus sistemas não tenham falhas, mas não sejam tão precisos`
+        }
+        if (qualidadeProfissionaisEquipamentos == 2) {
+           var porcentagemAtualizada = perda * 0.66
+           div_textoExplicativo.innerHTML = `Baseado em seu investimento anual de (${investimento})
+        perda anual de (${perda}%) e a qualidade dos seus equipamentos e profissionais percebemos que você tem uma perda de R$${perdaAnual} por ano, neste caso conseguimos te auxiliar na diminuição de aproximadamente ${porcentagemAtualizada}% contando que a sua equipe saiba cuidar de tanques de Pirarucu e seus sistemas não tenham falhas, mas sejam intermediarios`
+        } 
+        if(qualidadeProfissionaisEquipamentos == 3){
+        div_textoExplicativo.innerHTML = `Baseado em seu investimento anual de (${investimento})
+        perda anual de (${perda}%) e a qualidade dos seus equipamentos e profissionais percebemos que você tem uma perda de R$${perdaAnual} por ano, neste caso conseguimos te auxiliar na diminuição de aproximadamente todo o seu prejuiso, contando que a sua equipe seja especialista em cuidar dos tanques de Pirarucu e seus sistemas não tenham falhas e sejam muito precisos`
+        }
+    }
+</script>
